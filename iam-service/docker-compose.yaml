@@ -1,0 +1,8 @@
+version: "3.8"
+
+services:
+  iam:
+    image: iam:latest
+    container_name: iam-ctn
+    ports:
+      - 8080:8080
