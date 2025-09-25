@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    name: {{ .Values.name }}
+    namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      name: "{{ .Values.name }}-pod"
+      namespace: {{ .Values.namespace }}
+  template:
+    metadata:
+      labels:
+        name: "{{ .Values.name }}-pod"
+        namespace: {{ .Values.namespace }}
+      annotations:
+        deploy-timestamp: "{{ now | unixEpoch }}"
+    spec:
+      containers:
+        - name: {{ .Values.container_name }}
+          image: {{ .Values.image }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .Values.container_port }}
+          resources:
+            requests:
+              memory: {{ .Values.resources.request.memory }}
+              cpu: {{ .Values.resources.request.cpu }}
+            limits:
+              memory: {{ .Values.resources.limits.memory }}
+              cpu: {{ .Values.resources.limits.cpu }}

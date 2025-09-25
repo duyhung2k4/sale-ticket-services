@@ -9,6 +9,8 @@ FROM alpine:latest
 
 WORKDIR /app
 
+RUN apk add --no-cache curl
+
 COPY --from=build /build/app /app/app
 COPY --from=build /build/config/ /app/config/
 

@@ -1,3 +1,7 @@
+def call(String text) {
+    echo "Call: ${text}"
+}
+
 pipeline{
     agent{
         label "node"
@@ -6,6 +10,7 @@ pipeline{
         stage("A"){
             steps{
                 echo "========executing A========"
+                call("OKE")
             }
             post{
                 always{

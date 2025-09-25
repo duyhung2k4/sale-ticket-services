@@ -1,7 +1,8 @@
 package router
 
 import (
-	"sale-ticket-iam-service/internal/controller/health"
+	authcontroller "sale-ticket-iam-service/internal/controller/auth"
+	healthcontroller "sale-ticket-iam-service/internal/controller/health"
 	"time"
 
 	"github.com/gin-contrib/cors"
@@ -18,5 +19,9 @@ func handleApiV1(r *gin.RouterGroup) {
 		MaxAge:           12 * time.Hour,
 	}))
 
-	health.ConfigRouter(r)
+	healthGroup := r.Group("/health")
+	healthcontroller.Register(healthGroup)
+
+	authGroup := r.Group("/auth")
+	authcontroller.Register(authGroup)
 }
