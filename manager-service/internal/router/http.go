@@ -29,11 +29,8 @@ func HttpServer(startedGrpc <-chan bool, errStartHttpServer chan<- error) {
 		connection.ConfigInfo.App.Host,
 		connection.ConfigInfo.App.GrpcPort,
 	)
-	err := manager_api.RegisterHealthServiceHandlerFromEndpoint(ctx, mux, grpcAddr, opts)
-	if err != nil {
-		log.Fatalf("failed to register gateway: %v", err)
-		errStartHttpServer <- err
-	}
+	manager_api.RegisterHealthHandlerFromEndpoint(ctx, mux, grpcAddr, opts)
+	manager_api.RegisterMovieTheaterHandlerFromEndpoint(ctx, mux, grpcAddr, opts)
 
 	httpAddr := fmt.Sprintf(
 		":%s",

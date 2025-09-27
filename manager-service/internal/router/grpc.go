@@ -5,8 +5,9 @@ import (
 	"log"
 	"net"
 	manager_api "sale-tickets/manager-service/gen"
-	"sale-tickets/manager-service/internal"
 	"sale-tickets/manager-service/internal/connection"
+	health_controller "sale-tickets/manager-service/internal/handle/health"
+	moviethreater_controller "sale-tickets/manager-service/internal/handle/movie_threater"
 
 	"google.golang.org/grpc"
 )
@@ -19,7 +20,8 @@ func GrpcServer(startedGrpc chan<- bool, errStartGrpcServer chan<- error) {
 	}
 
 	s := grpc.NewServer()
-	manager_api.RegisterHealthServiceServer(s, internal.NewManagerService())
+	manager_api.RegisterHealthServer(s, health_controller.NewHandle())
+	manager_api.RegisterMovieTheaterServer(s, moviethreater_controller.NewHandle())
 
 	log.Printf("gRPC server running on %s", port)
 	startedGrpc <- true

@@ -1,5 +1,0 @@
-syntax = "proto3";
-
-package manager_api;
-
-option go_package = "./gen;manager_api";

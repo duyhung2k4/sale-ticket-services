@@ -7,7 +7,8 @@ import (
 )
 
 type Config struct {
-	App AppConfig `mapstructure:"app"`
+	App      AppConfig      `mapstructure:"app"`
+	Database DatabaseConfig `mapstructure:"database"`
 }
 
 type AppConfig struct {
@@ -15,6 +16,14 @@ type AppConfig struct {
 	Host     string `mapstructure:"host"`
 	GrpcPort string `mapstructure:"grpc_port"`
 	HttpPort string `mapstructure:"http_port"`
+}
+
+type DatabaseConfig struct {
+	Host     string `mapstructure:"host"`
+	Port     string `mapstructure:"port"`
+	Username string `mapstructure:"username"`
+	Password string `mapstructure:"password"`
+	Name     string `mapstructure:"name"`
 }
 
 var (

@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package movie_theater;
+
+option go_package = "./gen;manager_api";
+
+import "api/google/api/annotations.proto";
+
+message CreateMovieTheaterReq {
+    string name = 1;
+    string address = 2;
+}
+
+message CreateMovieTheaterRes {
+    string uuid = 1;
+    string name = 2;
+    string address = 3;
+}
+
+service MovieTheater {
+    rpc Create (CreateMovieTheaterReq) returns (CreateMovieTheaterRes) {
+        option (google.api.http) = {
+            post: "/api/v1/movie-theater/create"
+            body: "*"
+        };
+    };
+}

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package manager_api;
+package health;
 
 option go_package = "./gen;manager_api";
 
@@ -15,7 +15,7 @@ message Response {
     string mess = 1;
 }
 
-service HealthService {
+service Health {
     rpc Ping (Request) returns (Response) {
         option (google.api.http) = {
             get: "/api/v1/ping"
