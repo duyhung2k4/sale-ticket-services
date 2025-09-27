@@ -1,0 +1,5 @@
+app:
+  name: manager-service
+  host: 127.0.0.1
+  grpc_port: 50000
+  http_port: 8000
