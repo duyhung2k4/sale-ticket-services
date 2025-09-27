@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+package manager_api;
+
+option go_package = "sale-tickets/manager-service/internal/api/manager_api";
