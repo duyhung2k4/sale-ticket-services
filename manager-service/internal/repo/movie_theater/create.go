@@ -17,8 +17,9 @@ func (r *movietheaterRepo) Create(req view.CreateMovieTheaterReq) (id string, er
 		Base: model.Base{
 			Uuid: uuidBuf.String(),
 		},
-		Name:    req.Name,
-		Address: req.Address,
+		CreaterId: req.CreaterId,
+		Name:      req.Name,
+		Address:   req.Address,
 	}
 	err = r.db.Model(&model.MovieTheater{}).Create(&movie).Error
 	if err != nil {

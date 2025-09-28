@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 	manager_api "sale-tickets/manager-service/gen"
-	"sale-tickets/manager-service/internal/connection"
+	"sale-tickets/manager-service/internal/common/connection"
 
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"

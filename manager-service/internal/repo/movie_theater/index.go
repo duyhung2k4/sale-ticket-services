@@ -1,7 +1,7 @@
 package movietheater_repo
 
 import (
-	"sale-tickets/manager-service/internal/connection"
+	"sale-tickets/manager-service/internal/common/connection"
 	"sale-tickets/manager-service/internal/view"
 
 	"gorm.io/gorm"

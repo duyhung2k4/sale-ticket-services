@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"sale-tickets/manager-service/internal/connection"
+
+	"sale-tickets/manager-service/internal/common/connection"
 	"sale-tickets/manager-service/internal/router"
 )
 

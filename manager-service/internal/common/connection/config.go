@@ -9,6 +9,7 @@ import (
 type Config struct {
 	App      AppConfig      `mapstructure:"app"`
 	Database DatabaseConfig `mapstructure:"database"`
+	JwtKey   string         `mapstructure:"jwt-key"`
 }
 
 type AppConfig struct {

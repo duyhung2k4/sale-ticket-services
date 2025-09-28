@@ -7,6 +7,7 @@ import (
 
 type CreateMovieTheaterReq struct {
 	*manager_api.CreateMovieTheaterReq
+	CreaterId string
 }
 
 func (v *CreateMovieTheaterReq) Validate() error {
