@@ -1,0 +1,31 @@
+package movietheater_repo
+
+import (
+	"fmt"
+	"sale-tickets/manager-service/internal/common/utils"
+	"sale-tickets/manager-service/internal/view"
+)
+
+func (r *movietheaterRepo) CountList(req view.GetListMovieTheaterReq) (int32, error) {
+	var count int32
+	queryStr := fmt.Sprintf(`
+		SELECT count(uuid)
+		FROM movie_theaters
+		WHERE %s
+		`,
+		utils.MergeConditionAND(
+			utils.AddLikeClause("name"),
+			utils.AddLikeClause("address"),
+		),
+	)
+	err := r.db.Raw(
+		queryStr,
+		req.Filter.Name,
+		req.Filter.Address,
+	).Scan(&count).Error
+	if err != nil {
+		return 0, err
+	}
+
+	return count, nil
+}

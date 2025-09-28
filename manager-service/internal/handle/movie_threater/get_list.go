@@ -12,5 +12,10 @@ func (c *movieTheaterController) GetList(ctx context.Context, req *manager_api.G
 		return nil, err
 	}
 
-	return &manager_api.GetListMovieTheaterRes{}, nil
+	result, err := c.movieTheaterService.GetList(reqData)
+	if err != nil {
+		return nil, err
+	}
+
+	return result, nil
 }

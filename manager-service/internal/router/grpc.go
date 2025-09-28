@@ -1,19 +1,17 @@
 package router
 
 import (
-	"context"
-	"errors"
 	"fmt"
 	"log"
 	"net"
 	manager_api "sale-tickets/manager-service/gen"
 
 	"sale-tickets/manager-service/internal/common/connection"
+	"sale-tickets/manager-service/internal/common/middleware"
 	health_controller "sale-tickets/manager-service/internal/handle/health"
 	moviethreater_controller "sale-tickets/manager-service/internal/handle/movie_threater"
 
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/metadata"
 )
 
 func GrpcServer(startedGrpc chan<- bool, errStartGrpcServer chan<- error) {
@@ -25,16 +23,8 @@ func GrpcServer(startedGrpc chan<- bool, errStartGrpcServer chan<- error) {
 
 	s := grpc.NewServer(
 		grpc.ChainUnaryInterceptor(
-			func(ctx context.Context, req any, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp any, err error) {
-				md, ok := metadata.FromIncomingContext(ctx)
-				if !ok {
-					return nil, errors.New("metadata not ok")
-				}
-
-				md.Set("uuid", "0")
-				ctx = metadata.NewIncomingContext(ctx, md)
-				return handler(ctx, req)
-			},
+			middleware.ValidateToken,
+			middleware.GetProfileId,
 		),
 	)
 	manager_api.RegisterHealthServer(s, health_controller.NewHandle())

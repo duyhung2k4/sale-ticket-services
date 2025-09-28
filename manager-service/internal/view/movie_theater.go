@@ -27,6 +27,12 @@ type GetListMovieTheaterReq struct {
 }
 
 func (v *GetListMovieTheaterReq) Validate() error {
+	if v == nil {
+		return errors.New("request data nil")
+	}
+	if v.Filter == nil {
+		return errors.New("filter data nil")
+	}
 	if v.Limit < 0 {
 		return errors.New("invalid limit")
 	}
