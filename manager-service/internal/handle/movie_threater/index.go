@@ -2,18 +2,16 @@ package moviethreater_controller
 
 import (
 	manager_api "sale-tickets/manager-service/gen"
-	"sale-tickets/manager-service/internal/connection"
-
-	"gorm.io/gorm"
+	movietheater_service "sale-tickets/manager-service/internal/service/movie_theater"
 )
 
 type movieTheaterController struct {
-	db *gorm.DB
+	movieTheaterService movietheater_service.MovietheaterService
 	manager_api.UnimplementedMovieTheaterServer
 }
 
 func NewHandle() manager_api.MovieTheaterServer {
 	return &movieTheaterController{
-		db: connection.ConfigInfo.Database.GetConection(),
+		movieTheaterService: movietheater_service.NewMovietheaterService(),
 	}
 }

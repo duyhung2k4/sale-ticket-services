@@ -29,8 +29,8 @@ func (a *DatabaseConfig) connection() {
 	}
 
 	err = db.AutoMigrate(
-		model.CinemaRoomModel{},
-		model.MovieTheaterModel{},
+		model.CinemaRoom{},
+		model.MovieTheater{},
 	)
 	if err != nil {
 		fmt.Println("error migrate database: ", err.Error())

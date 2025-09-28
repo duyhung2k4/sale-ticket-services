@@ -4,7 +4,7 @@ app:
   grpc_port: 50000
   http_port: 8000
 database:
-  host: 10.43.113.42
+  host: 10.43.238.190
   port: 5432
   username: postgres
   password: 123456
