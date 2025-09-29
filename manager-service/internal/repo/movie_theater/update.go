@@ -2,6 +2,7 @@ package movietheater_repo
 
 import (
 	"sale-tickets/manager-service/internal/view"
+	"time"
 )
 
 func (r *movietheaterRepo) Update(req view.UpdateMovieTheaterReq) error {
@@ -9,7 +10,8 @@ func (r *movietheaterRepo) Update(req view.UpdateMovieTheaterReq) error {
 		UPDATE movie_theaters
 		SET
 			name = ?,
-			address = ?
+			address = ?,
+			updated_at = ?
 		WHERE uuid = ? AND deleted_at IS NULL
 	`
 
@@ -17,6 +19,7 @@ func (r *movietheaterRepo) Update(req view.UpdateMovieTheaterReq) error {
 		queryStr,
 		req.Name,
 		req.Address,
+		time.Now(),
 		req.Uuid,
 	).Error
 	if err != nil {

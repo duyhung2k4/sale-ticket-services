@@ -33,8 +33,8 @@ func (r *movietheaterRepo) GetList(req view.GetListMovieTheaterReq) ([]model.Mov
 		queryStr,
 		utils.AddLikeValue(req.Filter.Name),
 		utils.AddLikeValue(req.Filter.Address),
-		req.Limit,
-		req.Offset,
+		req.FilterBase.Limit,
+		req.FilterBase.Offset,
 	).Scan(&results).Error
 	if err != nil {
 		return nil, err

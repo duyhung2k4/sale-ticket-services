@@ -30,13 +30,16 @@ func (v *GetListMovieTheaterReq) Validate() error {
 	if v == nil {
 		return errors.New("request data nil")
 	}
+	if v.FilterBase == nil {
+		return errors.New("filter_base data nil")
+	}
 	if v.Filter == nil {
 		return errors.New("filter data nil")
 	}
-	if v.Limit < 0 {
+	if v.FilterBase.Limit < 0 {
 		return errors.New("invalid limit")
 	}
-	if v.Offset < 0 {
+	if v.FilterBase.Offset < 0 {
 		return errors.New("invalid offset")
 	}
 

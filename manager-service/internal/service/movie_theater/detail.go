@@ -17,7 +17,7 @@ func (s *movieTheaterService) Detail(req view.DetailMovieTheaterReq) (*manager_a
 		Address:   movieTheater.Address,
 		CreaterId: movieTheater.CreaterId,
 		CreatedAt: movieTheater.CreatedAt.String(),
-		UpdatedAt: movieTheater.CreatedAt.String(),
+		UpdatedAt: movieTheater.UpdatedAt.String(),
 	}
 
 	return result, nil

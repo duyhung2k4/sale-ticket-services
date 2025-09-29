@@ -5,6 +5,7 @@ package movie_theater;
 option go_package = "./gen;manager_api";
 
 import "api/google/api/annotations.proto";
+import "api/common.proto";
 
 // api: create
 message CreateMovieTheaterReq {
@@ -27,9 +28,8 @@ message UpdateMovieTheaterRes {
 }
 // api: get list
 message GetListMovieTheaterReq {    
-    int32 limit = 1;
-    int32 offset = 2;
-    MovieTheaterFilterReq filter = 3;
+    common.FilterBase filter_base = 1;
+    MovieTheaterFilterReq filter = 2;
 }
 message MovieTheaterFilterReq {
     string name = 1;

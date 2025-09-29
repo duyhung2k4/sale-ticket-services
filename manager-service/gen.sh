@@ -7,6 +7,4 @@ protoc \
     --grpc-gateway_out=. \
     --openapiv2_out=docs \
     --openapiv2_opt logtostderr=true \
-    api/*.proto
-mv ./docs/api/* ./docs/
-rm -rf docs/api
+    api/*.proto \
