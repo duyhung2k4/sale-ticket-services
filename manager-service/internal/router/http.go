@@ -32,6 +32,7 @@ func HttpServer(startedGrpc <-chan bool, errStartHttpServer chan<- error) {
 	)
 	manager_api.RegisterHealthHandlerFromEndpoint(ctx, mux, grpcAddr, opts)
 	manager_api.RegisterMovieTheaterHandlerFromEndpoint(ctx, mux, grpcAddr, opts)
+	manager_api.RegisterCinemaRoomServiceHandlerFromEndpoint(ctx, mux, grpcAddr, opts)
 
 	httpAddr := fmt.Sprintf(
 		":%s",

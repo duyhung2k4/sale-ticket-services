@@ -1,10 +1,7 @@
-mkdir -p gen
-rm -rf ./gen/*
+mkdir -p docs
+rm -rf docs/*
 protoc \
     -I=. \
-    --go_out=. \
-    --go-grpc_out=. \
-    --grpc-gateway_out=. \
     --openapiv2_out=docs \
     --openapiv2_opt logtostderr=true \
-    api/*.proto \
+    api/*.proto

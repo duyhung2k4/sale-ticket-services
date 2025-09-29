@@ -9,6 +9,7 @@ import (
 
 	"sale-tickets/manager-service/internal/common/connection"
 	"sale-tickets/manager-service/internal/common/middleware"
+	cinemaroom_controller "sale-tickets/manager-service/internal/handle/cinema_room"
 	health_controller "sale-tickets/manager-service/internal/handle/health"
 	moviethreater_controller "sale-tickets/manager-service/internal/handle/movie_threater"
 
@@ -30,6 +31,7 @@ func GrpcServer(startedGrpc chan<- bool, errStartGrpcServer chan<- error) {
 	)
 	manager_api.RegisterHealthServer(s, health_controller.NewHandle())
 	manager_api.RegisterMovieTheaterServer(s, moviethreater_controller.NewHandle())
+	manager_api.RegisterCinemaRoomServiceServer(s, cinemaroom_controller.NewHandle())
 
 	log.Printf("gRPC server running on %s", port)
 	startedGrpc <- true
