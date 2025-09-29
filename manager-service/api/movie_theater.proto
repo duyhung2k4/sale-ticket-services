@@ -6,6 +6,7 @@ option go_package = "./gen;manager_api";
 
 import "api/google/api/annotations.proto";
 
+// api: create
 message CreateMovieTheaterReq {
     string name = 1;
     string address = 2;
@@ -15,7 +16,16 @@ message CreateMovieTheaterRes {
     string name = 2;
     string address = 3;
 }
-
+// api: update
+message UpdateMovieTheaterReq {
+    string uuid = 1;
+    string name = 2;
+    string address = 3;
+}
+message UpdateMovieTheaterRes {
+    
+}
+// api: get list
 message GetListMovieTheaterReq {    
     int32 limit = 1;
     int32 offset = 2;
@@ -35,6 +45,18 @@ message MovieTheaterRes {
     string address = 3;
     string creater_id = 4;
 }
+// api: detail
+message DetailMovieTheaterReq {
+    string uuid = 1;
+}
+message DetailMovieTheaterRes {
+    string uuid = 1;
+    string name = 2;
+    string address = 3;
+    string creater_id = 4;
+    string created_at = 5;
+    string updated_at = 6;
+}
 
 service MovieTheater {
     rpc Create (CreateMovieTheaterReq) returns (CreateMovieTheaterRes) {
@@ -43,10 +65,21 @@ service MovieTheater {
             body: "*"
         };
     };
+    rpc Update (UpdateMovieTheaterReq) returns (UpdateMovieTheaterRes) {
+        option (google.api.http) = {
+            put: "/api/v1/movie-theater/update"
+            body: "*"
+        };
+    };
     rpc GetList(GetListMovieTheaterReq) returns (GetListMovieTheaterRes) {
         option (google.api.http) = {
             post: "/api/v1/movie-theater"
             body: "*"
+        };
+    };
+    rpc Detail (DetailMovieTheaterReq) returns (DetailMovieTheaterRes) {
+        option (google.api.http) = {
+            get : "/api/v1/movie-theater/{uuid}"
         };
     }
 }

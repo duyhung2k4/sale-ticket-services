@@ -20,8 +20,8 @@ func (r *movietheaterRepo) CountList(req view.GetListMovieTheaterReq) (int32, er
 	)
 	err := r.db.Raw(
 		queryStr,
-		req.Filter.Name,
-		req.Filter.Address,
+		utils.AddLikeValue(req.Filter.Name),
+		utils.AddLikeValue(req.Filter.Address),
 	).Scan(&count).Error
 	if err != nil {
 		return 0, err

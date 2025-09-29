@@ -12,7 +12,9 @@ type (
 	}
 	MovietheaterService interface {
 		Create(req view.CreateMovieTheaterReq) (id string, err error)
+		Update(req view.UpdateMovieTheaterReq) (*manager_api.UpdateMovieTheaterRes, error)
 		GetList(req view.GetListMovieTheaterReq) (*manager_api.GetListMovieTheaterRes, error)
+		Detail(req view.DetailMovieTheaterReq) (*manager_api.DetailMovieTheaterRes, error)
 	}
 )
 

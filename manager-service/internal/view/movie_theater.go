@@ -42,3 +42,24 @@ func (v *GetListMovieTheaterReq) Validate() error {
 
 	return nil
 }
+
+type DetailMovieTheaterReq struct {
+	*manager_api.DetailMovieTheaterReq
+}
+
+type UpdateMovieTheaterReq struct {
+	*manager_api.UpdateMovieTheaterReq
+}
+
+func (v *UpdateMovieTheaterReq) Validate() error {
+	if v == nil {
+		return errors.New("request data nil")
+	}
+	if v.Name == "" {
+		return errors.New("name invalid")
+	}
+	if v.Address == "" {
+		return errors.New("address invalid")
+	}
+	return nil
+}
