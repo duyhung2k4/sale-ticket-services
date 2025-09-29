@@ -1,9 +1,10 @@
 package movietheater_service
 
 import (
-	manager_api "sale-tickets/manager-service/gen"
 	movietheater_repo "sale-tickets/manager-service/internal/repo/movie_theater"
 	"sale-tickets/manager-service/internal/view"
+
+	manager_api "github.com/duyhung2k4/sale-tickets-golang-common/manager-api/proto"
 )
 
 type (

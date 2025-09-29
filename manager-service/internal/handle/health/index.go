@@ -1,7 +1,7 @@
 package health_controller
 
 import (
-	manager_api "sale-tickets/manager-service/gen"
+	manager_api "github.com/duyhung2k4/sale-tickets-golang-common/manager-api/proto"
 )
 
 type managerService struct {

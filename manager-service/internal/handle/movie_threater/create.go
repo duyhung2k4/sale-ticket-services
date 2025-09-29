@@ -3,8 +3,9 @@ package moviethreater_controller
 import (
 	"context"
 	"errors"
-	manager_api "sale-tickets/manager-service/gen"
 	"sale-tickets/manager-service/internal/view"
+
+	manager_api "github.com/duyhung2k4/sale-tickets-golang-common/manager-api/proto"
 
 	"google.golang.org/grpc/metadata"
 )

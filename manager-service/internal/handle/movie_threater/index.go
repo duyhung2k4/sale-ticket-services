@@ -1,8 +1,9 @@
 package moviethreater_controller
 
 import (
-	manager_api "sale-tickets/manager-service/gen"
 	movietheater_service "sale-tickets/manager-service/internal/service/movie_theater"
+
+	manager_api "github.com/duyhung2k4/sale-tickets-golang-common/manager-api/proto"
 )
 
 type movieTheaterController struct {

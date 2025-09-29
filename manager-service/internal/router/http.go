@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	manager_api "sale-tickets/manager-service/gen"
 	"sale-tickets/manager-service/internal/common/connection"
+
+	manager_api "github.com/duyhung2k4/sale-tickets-golang-common/manager-api/proto"
 
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"

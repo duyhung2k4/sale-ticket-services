@@ -2,8 +2,9 @@ package moviethreater_controller
 
 import (
 	"context"
-	manager_api "sale-tickets/manager-service/gen"
 	"sale-tickets/manager-service/internal/view"
+
+	manager_api "github.com/duyhung2k4/sale-tickets-golang-common/manager-api/proto"
 )
 
 func (c *movieTheaterController) Detail(ctx context.Context, req *manager_api.DetailMovieTheaterReq) (*manager_api.DetailMovieTheaterRes, error) {
