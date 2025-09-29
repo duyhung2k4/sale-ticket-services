@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package model;
+
+option go_package = "./manager-api/proto;manager_api";
+
+message CinemaRoomModel {
+    string uuid = 1;
+    string movie_theater_id = 2;
+    string code = 3;
+    string created_at = 4;
+    string updated_at = 5;
+}
