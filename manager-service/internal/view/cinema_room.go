@@ -22,3 +22,48 @@ func (v *CreateCinemaRoomReq) Validate() error {
 	}
 	return nil
 }
+
+type UpdateCinemaRoomReq struct {
+	*manager_api.UpdateCinemaRoomReq
+}
+
+func (v *UpdateCinemaRoomReq) Validate() error {
+	if v == nil {
+		return errors.New("request data nil")
+	}
+	if v.Uuid == "" {
+		return errors.New("uuid invalid")
+	}
+	if v.Code == "" {
+		return errors.New("code invalid")
+	}
+	return nil
+}
+
+type ListCinemaRoomReq struct {
+	*manager_api.ListCinemaRoomReq
+}
+
+func (v *ListCinemaRoomReq) Validate() error {
+	if v == nil {
+		return errors.New("request data nil")
+	}
+	if v.FilterBase == nil {
+		return errors.New("filter_base invalid")
+	}
+	if v.Filter == nil {
+		return errors.New("filter invalid")
+	}
+	if v.Filter.Code == "" {
+		return errors.New("code invalid")
+	}
+	return nil
+}
+
+type DetailCinemaRoomReq struct {
+	*manager_api.DetailCinemaRoomReq
+}
+
+func (v *DetailCinemaRoomReq) Validate() error {
+	return nil
+}
